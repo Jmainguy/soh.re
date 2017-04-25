@@ -1,12 +1,13 @@
 package main
 
 import (
-    "fmt"
-    "net/http"
-    "github.com/gin-gonic/gin"
-    "os/exec"
-    "crypto/rand"
+    "io"
     "log"
+    "net"
+    "strings"
+    "os/exec"
+    "fmt"
+    "crypto/rand"
 )
 
 func check(e error) {
@@ -15,7 +16,26 @@ func check(e error) {
     }
 }
 
-func dockerStuff() (sendurl string) {
+func forward(conn net.Conn) {
+    target := dockerStuff()
+    client, err := net.Dial("tcp", target)
+    if err != nil {
+        log.Fatalf("Dial failed: %v", err)
+    }
+    log.Printf("Connected to localhost %v\n", conn)
+    go func() {
+        defer client.Close()
+        defer conn.Close()
+        io.Copy(client, conn)
+    }()
+    go func() {
+        defer client.Close()
+        defer conn.Close()
+        io.Copy(conn, client)
+    }()
+}
+
+func dockerStuff() (target string) {
     // Random name for container
     n := 10
     b := make([]byte, n)
@@ -30,22 +50,23 @@ func dockerStuff() (sendurl string) {
     port, err := exec.Command("docker", "inspect", "--format='{{(index (index .NetworkSettings.Ports \"8080/tcp\") 0).HostPort}}'", randomname).Output()
     check(err)
     // Send client to port
-    log.Println(string(port))
-    sendurl = fmt.Sprintf("http://localhost:%v", string(port))
-    log.Println(sendurl)
-    return sendurl
+    sendurl := fmt.Sprintf("localhost:%v", string(port))
+    target = strings.Replace(sendurl, "\n", "", -1)
+    return
 }
+
 
 func main() {
-    // Read Config, load values
-    listenport := 8083
+    listener, err := net.Listen("tcp", "localhost:8085")
+    check(err)
 
-    r := gin.Default()
-    r.GET("/", func(c *gin.Context) {
-        sendurl := dockerStuff()
-        c.Redirect(http.StatusTemporaryRedirect, sendurl)
-    })
-
-    listen := fmt.Sprintf(":%v", listenport)
-    r.Run(listen) // listen and serve content on 0.0.0.0:$listenport
+    for {
+        conn, err := listener.Accept()
+        if err != nil {
+            log.Fatalf("ERROR: failed to accept listener: %v", err)
+        }
+        log.Printf("Accepted connection %v\n", conn)
+        go forward(conn)
+    }
 }
+
