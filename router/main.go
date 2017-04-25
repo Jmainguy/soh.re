@@ -57,7 +57,7 @@ func dockerStuff() (target string) {
 
 
 func main() {
-    listener, err := net.Listen("tcp", "localhost:8085")
+    listener, err := net.Listen("tcp", "0.0.0.0:8085")
     check(err)
 
     for {
