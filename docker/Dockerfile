@@ -11,4 +11,4 @@ EXPOSE 8080
 ENV TERM=xterm
 WORKDIR /home/joshua
 ADD .gotty /home/joshua/.gotty
-CMD ["/bin/gotty", "--timeout", "10", "--once", "-w", "/bin/bash"]
+CMD ["/bin/gotty", "--once", "-w", "/bin/bash"]

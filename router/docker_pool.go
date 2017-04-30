@@ -7,7 +7,7 @@ import (
     "crypto/rand"
 )
 
-func dockerStuff() (target string) {
+func dockerStuff(sqldb string) {
     // Random name for container
     n := 10
     b := make([]byte, n)
@@ -23,6 +23,36 @@ func dockerStuff() (target string) {
     check(err)
     // Send client to port
     sendurl := fmt.Sprintf("localhost:%v", string(port))
-    target = strings.Replace(sendurl, "\n", "", -1)
-    return
+    target := strings.Replace(sendurl, "\n", "", -1)
+    // Add to pool
+    add_docker_to_pool(sqldb, target)
+}
+
+func add_docker_to_pool(sqldb, url string) {
+    db := InitDB(sqldb)
+    CreateTable(db)
+    // Store current, and average
+    items := []TestItem{
+        TestItem{url},
+    }
+
+    StoreItem(db, items)
+}
+
+
+func pull_docker_from_pool(sqldb string) (target string) {
+    db := InitDB(sqldb)
+    CreateTable(db)
+    target = ReadItem(db)
+    DelItem(db, target)
+    return target
+}
+
+func keep_10_in_pool(sqldb string) {
+    // add 10 to pool initially
+    i := 0
+    for i <= 10 {
+        dockerStuff(sqldb)
+        i = i + 1
+    }
 }
