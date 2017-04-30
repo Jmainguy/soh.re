@@ -10,4 +10,5 @@ ADD id_rsa /home/joshua/.ssh/id_rsa
 EXPOSE 8080
 ENV TERM=xterm
 WORKDIR /home/joshua
-CMD ["/bin/gotty", "--max-connection", "1", "--timeout", "2", "--once", "-w", "/bin/bash"]
+ADD .gotty /home/joshua/.gotty
+CMD ["/bin/gotty", "--timeout", "10", "--once", "-w", "/bin/bash"]
