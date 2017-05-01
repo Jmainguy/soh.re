@@ -4,19 +4,21 @@ import (
     "io"
     "log"
     "net"
+    _ "github.com/mattn/go-sqlite3"
+    "database/sql"
 )
 
 func check(e error) {
     if e != nil {
         log.Println(e)
-        panic(e)
+        //panic(e)
     }
 }
 
-func forward(sqldb string, conn net.Conn) {
+func forward(db *sql.DB, conn net.Conn) {
     log.Printf("Before Dockerstuff %v\n", conn)
     //target := dockerStuff()
-    target := pull_docker_from_pool(sqldb)
+    target := pull_docker_from_pool(db)
     log.Printf("After Dockerstuff %v\n", conn)
     client, err := net.Dial("tcp", target)
     if err != nil {
@@ -24,7 +26,7 @@ func forward(sqldb string, conn net.Conn) {
     }
     log.Printf("Connected to localhost %v\n", conn)
     // Add another host to pool
-    go dockerStuff(sqldb)
+    go dockerStuff(db)
     go func() {
         defer client.Close()
         defer conn.Close()
@@ -39,17 +41,18 @@ func forward(sqldb string, conn net.Conn) {
 
 func main() {
     sqldb := config()
+    db := InitDB(sqldb)
+    CreateTable(db)
     listener, err := net.Listen("tcp", "0.0.0.0:8085")
-    keep_10_in_pool(sqldb)
+    go keep_10_in_pool(db)
     check(err)
-
     for {
         conn, err := listener.Accept()
         if err != nil {
             log.Fatalf("ERROR: failed to accept listener: %v", err)
         }
         log.Printf("Accepted connection %v\n", conn)
-        go forward(sqldb, conn)
+        go forward(db, conn)
     }
 }
 
