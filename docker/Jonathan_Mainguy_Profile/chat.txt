@@ -1,0 +1,4 @@
+# I usually idle on IRC, feel free to connect via weechat from here to send me a message
+## I will be unable to answer it though if you disconnect / dont leave me a way of getting back to you
+## Run the command weechat
+weechat

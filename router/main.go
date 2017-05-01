@@ -16,10 +16,7 @@ func check(e error) {
 }
 
 func forward(db *sql.DB, conn net.Conn) {
-    log.Printf("Before Dockerstuff %v\n", conn)
-    //target := dockerStuff()
     target := pull_docker_from_pool(db)
-    log.Printf("After Dockerstuff %v\n", conn)
     client, err := net.Dial("tcp", target)
     if err != nil {
 	check(err)

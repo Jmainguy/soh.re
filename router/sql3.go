@@ -86,10 +86,8 @@ func StoreItem(db *sql.DB, items []TestItem) {
             log.Println("doing rollback")
             tx.Rollback()
         } else {
-            log.Println("Committing")
             err = tx.Commit()
             check(err)
-            log.Println("Committed")
         }
     }
 }
@@ -117,9 +115,7 @@ func DelName(db *sql.DB, name string) {
        log.Println("doing rollback")
        tx.Rollback()
     } else {
-       log.Println("Committing")
        err = tx.Commit()
        check(err)
-       log.Println("Committed")
     }
 }

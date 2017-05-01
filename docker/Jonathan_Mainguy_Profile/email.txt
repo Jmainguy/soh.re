@@ -1,0 +1,3 @@
+# jon@soh.re
+## You *should'nt be able to send an email from the shell here, sorry =)
+mailto:jon@soh.re
