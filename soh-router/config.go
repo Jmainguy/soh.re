@@ -11,7 +11,7 @@ type Config struct {
 
 func config() (sqldb string){
     var v Config
-    config_file, err := ioutil.ReadFile("/etc/soh_router/config.yaml")
+    config_file, err := ioutil.ReadFile("/etc/soh-router/config.yaml")
     check(err)
     yaml.Unmarshal(config_file, &v)
     sqldb = v.Sqldb
