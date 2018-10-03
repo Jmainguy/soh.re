@@ -47,25 +47,6 @@ func ReadItem(db *sql.DB) (url string) {
     return url
 }
 
-/*
-func StoreItem(db *sql.DB, items []TestItem) {
-    sql_additem := `
-    INSERT OR REPLACE INTO docker_pool(
-        Url,
-        Name
-    ) values(?, ?)
-    `
-
-    stmt, err := db.Prepare(sql_additem)
-    check(err)
-
-    for _, item := range items {
-        _, err = stmt.Exec(item.Url, item.Name)
-        check(err)
-    }
-    stmt.Close()
-}
-*/
 func StoreItem(db *sql.DB, items []TestItem) {
     sql_additem := `
     INSERT OR REPLACE INTO docker_pool(
