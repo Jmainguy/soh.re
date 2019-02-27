@@ -18,5 +18,6 @@ ADD motd /etc/motd
 ADD bashrc /home/jmainguy/.bashrc
 ADD config /home/jmainguy/.ssh/config
 RUN chown -R jmainguy:jmainguy /home/jmainguy
+RUN chmod 600 /home/jmainguy/.ssh/*
 USER jmainguy
 CMD ["/bin/gotty", "--once", "-w", "/bin/bash"]
