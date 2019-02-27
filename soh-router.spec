@@ -4,7 +4,7 @@
 %define _unpackaged_files_terminate_build 0
 Name:	 soh-router
 Version: 0.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 Summary: A golang daemon to run soh.re router
 
 License: GPLv2
