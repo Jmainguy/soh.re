@@ -16,6 +16,7 @@ WORKDIR /home/jmainguy
 ADD .gotty /home/jmainguy/.gotty
 ADD motd /etc/motd
 ADD bashrc /home/jmainguy/.bashrc
+ADD config /home/jmainguy/.ssh/config
 RUN chown -R jmainguy:jmainguy /home/jmainguy
 USER jmainguy
 CMD ["/bin/gotty", "--once", "-w", "/bin/bash"]
