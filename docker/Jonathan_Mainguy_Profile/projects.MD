@@ -1,5 +1,6 @@
 # Projects
 This is a list of projects, ordered by what I think is most recent and interesting that I have worked on.
+# I havent updated this in awhile, you should see what I am upto on github as I post all my personal / non work stuff there
 
 ## This website
 
