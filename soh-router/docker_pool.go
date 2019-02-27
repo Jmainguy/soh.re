@@ -20,7 +20,7 @@ func dockerStuff(db *sql.DB) {
     }
     randomname := fmt.Sprintf("%X", b)
     // Spin up docker container
-    _, err := exec.Command("docker", "run", "-Pd", "--name", randomname, "--pids-limit", "20", "soh.re/site").Output()
+    _, err := exec.Command("docker", "run", "-Pd", "--rm", "--name", randomname, "--pids-limit", "20", "soh.re/site").Output()
     check(err)
     // Get port
     port, err := exec.Command("docker", "inspect", "--format='{{(index (index .NetworkSettings.Ports \"8080/tcp\") 0).HostPort}}'", randomname).Output()
