@@ -6,16 +6,22 @@
   tasks:
     - name: install packages
       yum:
-        name: {{ item }}
+        name: "{{ item }}"
         state: present
       with_items:
         - https://pulp.soh.re/pulp/repos/sohre/el7/Packages/s/soh-router-0.3-2.el7.x86_64.rpm
         - docker
         - haproxy
 
+    - name: Copy haproxy.cfg
+      copy: 
+        src: haproxy.cfg
+        dest: /etc/haproxy.cfg
+        mode: 0644
+
     - name: Start services
       service:
-        name: {{ item }}
+        name: "{{ item }}"
         state: started
         enabled: yes
       with_items:
@@ -24,6 +30,6 @@
         - haproxy
 
     - name: Docker pull and run
-      shell: {{ item }}
+      shell: "{{ item }}"
       with_items:
         - "docker run -d -p 8080:8080 --restart always --name web hub.soh.re/soh.re/site"
