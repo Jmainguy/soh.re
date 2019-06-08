@@ -3,7 +3,7 @@
 %endif
 %define _unpackaged_files_terminate_build 0
 Name:	 soh-router
-Version: 0.4
+Version: 0.5
 Release: 1%{?dist}
 Summary: A golang daemon to run soh.re router
 
@@ -50,5 +50,6 @@ chown -R soh-router:soh-router /opt/soh-router
 if [ -f /usr/bin/systemctl ]; then
   systemctl daemon-reload && systemctl restart docker
 fi
+semanage port -a -t http_port_t -p tcp 8085
 
 %changelog
