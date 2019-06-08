@@ -16,7 +16,7 @@
     - name: Copy haproxy.cfg
       copy: 
         src: haproxy.cfg
-        dest: /etc/haproxy.cfg
+        dest: /etc/haproxy/haproxy.cfg
         mode: 0644
 
     - name: Start services
