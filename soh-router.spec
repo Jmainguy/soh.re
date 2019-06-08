@@ -3,8 +3,8 @@
 %endif
 %define _unpackaged_files_terminate_build 0
 Name:	 soh-router
-Version: 0.3
-Release: 2%{?dist}
+Version: 0.4
+Release: 1%{?dist}
 Summary: A golang daemon to run soh.re router
 
 License: GPLv2
@@ -42,6 +42,7 @@ getent group soh-router >/dev/null || groupadd -r soh-router
 getent passwd soh-router >/dev/null || \
     useradd -r -g soh-router -d /opt/soh-router -s /sbin/nologin \
     -c "User to run soh-router service" soh-router && \
+    groupadd docker && \
     usermod -aG docker soh-router
 exit 0
 %post

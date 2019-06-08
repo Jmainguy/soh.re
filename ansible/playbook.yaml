@@ -9,7 +9,7 @@
         name: "{{ item }}"
         state: present
       with_items:
-        - https://pulp.soh.re/pulp/repos/sohre/el7/Packages/s/soh-router-0.3-2.el7.x86_64.rpm
+        - https://pulp.soh.re/pulp/repos/sohre/el7/Packages/s/soh-router-0.4-1.el7.x86_64.rpm
         - docker
         - haproxy
 
