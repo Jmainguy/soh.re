@@ -3,7 +3,7 @@
 %endif
 %define _unpackaged_files_terminate_build 0
 Name:	 soh-router
-Version: 0.2
+Version: 0.3
 Release: 2%{?dist}
 Summary: A golang daemon to run soh.re router
 

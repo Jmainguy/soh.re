@@ -1,0 +1,29 @@
+---
+
+- name: Setup host for soh-router
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: install packages
+      yum:
+        name: {{ item }}
+        state: present
+      with_items:
+        - https://pulp.soh.re/pulp/repos/sohre/el7/Packages/s/soh-router-0.3-2.el7.x86_64.rpm
+        - docker
+        - haproxy
+
+    - name: Start services
+      service:
+        name: {{ item }}
+        state: started
+        enabled: yes
+      with_items:
+        - docker
+        - soh-router
+        - haproxy
+
+    - name: Docker pull and run
+      shell: {{ item }}
+      with_items:
+        - "docker run -d -p 8080:8080 --restart always --name web hub.soh.re/soh.re/site"

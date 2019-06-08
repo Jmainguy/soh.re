@@ -20,13 +20,15 @@ func dockerStuff(db *sql.DB) {
     }
     randomname := fmt.Sprintf("%X", b)
     // Spin up docker container
-    _, err := exec.Command("docker", "run", "-Pd", "--name", randomname, "--pids-limit", "20", "soh.re/site").Output()
+    _, err := exec.Command("docker", "run", "-Pd", "--name", randomname, "--pids-limit", "20", "hub.soh.re/soh.re/site").Output()
     check(err)
     // Get port
-    port, err := exec.Command("docker", "inspect", "--format='{{(index (index .NetworkSettings.Ports \"8080/tcp\") 0).HostPort}}'", randomname).Output()
+    portbyte, err := exec.Command("docker", "inspect", "--format='{{(index (index .NetworkSettings.Ports \"8080/tcp\") 0).HostPort}}'", randomname).Output()
+    port := string(portbyte)
+    port = strings.Replace(port, "'", "", -1)
     check(err)
     // Send client to port
-    sendurl := fmt.Sprintf("localhost:%v", string(port))
+    sendurl := fmt.Sprintf("localhost:%s", port)
     target := strings.Replace(sendurl, "\n", "", -1)
     // Add to pool
     add_docker_to_pool(db, target, randomname)
@@ -51,7 +53,7 @@ func pull_docker_from_pool(db *sql.DB) (target string) {
 func keep_10_in_pool(db *sql.DB) {
     // add 10 to pool initially
     i := 1
-    for i <= 2 {
+    for i <= 10 {
         dockerStuff(db)
         i = i + 1
     }
