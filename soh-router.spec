@@ -1,6 +1,3 @@
-%if 0%{?rhel} == 7
-  %define dist .el7
-%endif
 %define _unpackaged_files_terminate_build 0
 Name:	 soh-router
 Version: 0.5
