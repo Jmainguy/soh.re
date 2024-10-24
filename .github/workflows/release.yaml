@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   release-please:
-    uses: Jmainguy/docker-workflows/.github/workflows/docker-release.yml@context
+    uses: Jmainguy/docker-workflows/.github/workflows/docker-release.yml@v2
     secrets:
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
