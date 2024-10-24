@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/Jmainguy/soh.re/compare/v1.0.0...v1.0.1) (2024-10-24)
+
+
+### Bug Fixes
+
+* trigger new release ([9da04ce](https://github.com/Jmainguy/soh.re/commit/9da04ceeaff44f48740710f4235a8eef2aa5388b))
+
 ## 1.0.0 (2024-10-24)
 
 
