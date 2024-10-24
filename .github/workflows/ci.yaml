@@ -1,0 +1,20 @@
+name: Build and Scan Docker Image
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+permissions:
+  actions: read
+  contents: read
+  security-events: write
+
+jobs:
+  docker-ci:
+    uses: Jmainguy/docker-workflows/.github/workflows/docker-ci.yml@context
+    with:
+      docker_context: docker/

@@ -1,0 +1,23 @@
+name: Release Docker Image
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  release-please:
+    uses: Jmainguy/docker-workflows/.github/workflows/docker-release.yml@context
+    secrets:
+      docker_username: ${{ secrets.DOCKER_USERNAME }}
+      docker_password: ${{ secrets.DOCKER_PASSWORD }}
+    with:
+      docker_url: zot.soh.re
+      image_name: ${{ github.event.repository.name }}
+      authors: "Jonathan Seth Mainguy <jon@soh.re>"
+      vendor: "Jmainguy"
+      docker_context: docker/
