@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/Jmainguy/soh.re/compare/v1.0.2...v1.1.0) (2024-10-25)
+
+
+### Features
+
+* support arm / docker deploys of site ([4abd98b](https://github.com/Jmainguy/soh.re/commit/4abd98bd4603aef9d696d124b7fb9457324cf551))
+
 ## [1.0.2](https://github.com/Jmainguy/soh.re/compare/v1.0.1...v1.0.2) (2024-10-24)
 
 
