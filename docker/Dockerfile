@@ -1,5 +1,7 @@
 # Maintainer Jonathan Mainguy jon@soh.re
-FROM fedora as build
+FROM fedora
+# Set architecture-specific variables
+ARG TARGETARCH
 RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
 # asciiquarium
 RUN curl https://raw.githubusercontent.com/Jmainguy/asciiquarium/main/asciiquarium --output /bin/asciiquarium
@@ -15,19 +17,18 @@ RUN mkdir -p /home/jmainguy/bin
 ADD .gotty /home/jmainguy/.gotty
 ADD bashrc /home/jmainguy/.bashrc
 # Bible
-RUN curl -L https://github.com/Jmainguy/bible/releases/download/v0.3.1/bible_Linux_x86_64.tar.gz --output /tmp/bible.tar.gz
+# Download the correct binary based on architecture
+RUN curl -L "https://github.com/Jmainguy/bible/releases/download/v0.3.2/bible_Linux_${TARGETARCH}.tar.gz" -o /tmp/bible.tar.gz
 RUN tar zxvf /tmp/bible.tar.gz
 RUN cp bible /home/jmainguy/bin/
 RUN mkdir -p /home/jmainguy/.bible/
-RUN curl -L https://github.com/Jmainguy/bible/raw/main/database/bible.db --output /home/jmainguy/.bible/bible.db
+RUN cp database/bible.db /home/jmainguy/.bible/bible.db
 # Bak
 RUN curl https://raw.githubusercontent.com/Jmainguy/bak/main/bak --output /home/jmainguy/bin/bak
 RUN chmod +x /home/jmainguy/bin/*
 RUN dnf install -y python3-xattr
 
-FROM fedora as middle
 ADD motd /etc/motd
-COPY --from=build /home/jmainguy /home/jmainguy
 RUN useradd jmainguy
 RUN chown -R jmainguy:jmainguy /home/jmainguy
 

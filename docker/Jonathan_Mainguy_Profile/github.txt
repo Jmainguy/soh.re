@@ -1,4 +1,4 @@
 # Personal Profile
 https://github.com/Jmainguy
-# Deprecated company profile when I ran a minecraft business
-https://github.com/standouthost/multicraft
+# My personal infrastructure organization
+https://github.com/standouthost

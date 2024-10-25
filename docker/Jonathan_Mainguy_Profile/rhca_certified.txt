@@ -1,5 +1,2 @@
 # I was a certified Red Hat Architect.
-# It is currently expired
-# This means I had a RHCE, RHCSA
-# And atleast 5 other Red Hat Certificates.
 https://www.redhat.com/rhtapps/certification/verify/?certId=140-120-619
