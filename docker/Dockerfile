@@ -1,5 +1,5 @@
 # Maintainer Jonathan Mainguy jon@soh.re
-FROM fedora
+FROM fedora:41
 # Set architecture-specific variables
 ARG TARGETARCH
 RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
@@ -26,15 +26,19 @@ RUN cp database/bible.db /home/jmainguy/.bible/bible.db
 # Bak
 RUN curl https://raw.githubusercontent.com/Jmainguy/bak/main/bak --output /home/jmainguy/bin/bak
 RUN chmod +x /home/jmainguy/bin/*
-RUN dnf install -y python3-xattr
+RUN dnf install -y python3-xattr wget
+
+# Gotty / ttyd
+## Add this to /bin/
+RUN wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64 -O /bin/ttyd
+RUN chmod +x /bin/ttyd
 
 ADD motd /etc/motd
 RUN useradd jmainguy
 RUN chown -R jmainguy:jmainguy /home/jmainguy
 
-ADD gotty /bin/gotty
 USER jmainguy
 WORKDIR /home/jmainguy
 EXPOSE 8080
 ENV TERM=xterm
-CMD ["/bin/gotty", "--once", "-w", "/bin/bash"]
+CMD ["/bin/ttyd", "--once", "--writable", "-p", "8080", "/bin/bash"]
