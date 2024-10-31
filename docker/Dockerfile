@@ -2,6 +2,9 @@
 FROM fedora:41
 # Set architecture-specific variables
 ARG TARGETARCH
+# Set version of custom ttyd
+ARG TTYD_VERSION=1.8.2
+
 RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
 # asciiquarium
 RUN curl https://raw.githubusercontent.com/Jmainguy/asciiquarium/main/asciiquarium --output /bin/asciiquarium
@@ -29,8 +32,15 @@ RUN chmod +x /home/jmainguy/bin/*
 RUN dnf install -y python3-xattr wget
 
 # Gotty / ttyd
-## Add this to /bin/
-RUN wget https://github.com/tsl0922/ttyd/releases/download/1.7.7/ttyd.x86_64 -O /bin/ttyd
+# Download the appropriate ttyd binary based on the architecture
+RUN if [ "$TARGETARCH" = "amd64" ]; then \
+        wget https://github.com/Jmainguy/ttyd/releases/download/${TTYD_VERSION}/ttyd.x86_64 -O /bin/ttyd; \
+    elif [ "$TARGETARCH" = "arm64" ]; then \
+        wget https://github.com/Jmainguy/ttyd/releases/download/${TTYD_VERSION}/ttyd.aarch64 -O /bin/ttyd; \
+    else \
+        echo "Unsupported architecture: $TARGETARCH"; \
+        exit 1; \
+    fi
 RUN chmod +x /bin/ttyd
 
 ADD motd /etc/motd
