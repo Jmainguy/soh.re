@@ -1,5 +1,5 @@
 # Maintainer Jonathan Mainguy jon@soh.re
-FROM fedora:41
+FROM fedora:42
 # Set architecture-specific variables
 ARG TARGETARCH
 RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
