@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/Jmainguy/soh.re/compare/v1.2.1...v1.2.2) (2024-10-31)
+
+
+### Bug Fixes
+
+* update to 1.8.3 ([4705037](https://github.com/Jmainguy/soh.re/commit/470503708659526b4072521026fbaed0ffc2c249))
+
 ## [1.2.1](https://github.com/Jmainguy/soh.re/compare/v1.2.0...v1.2.1) (2024-10-31)
 
 
