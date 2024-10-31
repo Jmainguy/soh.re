@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/Jmainguy/soh.re/compare/v1.1.0...v1.2.0) (2024-10-31)
+
+
+### Features
+
+* switch gotty back to ttyd ([f5b5d3d](https://github.com/Jmainguy/soh.re/commit/f5b5d3d8fe56f31f7f44ff896293b3e983d2faab))
+
 ## [1.1.0](https://github.com/Jmainguy/soh.re/compare/v1.0.2...v1.1.0) (2024-10-25)
 
 
