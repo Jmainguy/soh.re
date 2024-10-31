@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/Jmainguy/soh.re/compare/v1.2.0...v1.2.1) (2024-10-31)
+
+
+### Bug Fixes
+
+* support arm and amd64, using custom forked ttyd ([dfed0cd](https://github.com/Jmainguy/soh.re/commit/dfed0cd249c0b7396acdeebf0e6c0a1383241762))
+
 ## [1.2.0](https://github.com/Jmainguy/soh.re/compare/v1.1.0...v1.2.0) (2024-10-31)
 
 
