@@ -3,7 +3,7 @@ FROM fedora:41
 # Set architecture-specific variables
 ARG TARGETARCH
 # Set version of custom ttyd
-ARG TTYD_VERSION=1.8.2
+ARG TTYD_VERSION=1.8.3
 
 RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
 # asciiquarium
