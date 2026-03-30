@@ -1,5 +1,5 @@
 # Maintainer Jonathan Mainguy jon@soh.re
-FROM fedora:44
+FROM fedora:45
 # Set architecture-specific variables
 ARG TARGETARCH
 # Set version of custom ttyd
