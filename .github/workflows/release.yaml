@@ -17,7 +17,7 @@ jobs:
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
     with:
       docker_url: zot.soh.re
-      image_name: ${{ github.event.repository.name }}
+      image_name: jmainguy/${{ github.event.repository.name }}
       authors: "Jonathan Seth Mainguy <jon@soh.re>"
       url: "https://github.com/Jmainguy/soh.re"
       source: "https://github.com/Jmainguy/soh.re"
