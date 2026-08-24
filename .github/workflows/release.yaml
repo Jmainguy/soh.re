@@ -11,13 +11,17 @@ permissions:
 
 jobs:
   release-please:
-    uses: Jmainguy/docker-workflows/.github/workflows/docker-release.yml@v4
+    uses: Jmainguy/docker-workflows/.github/workflows/docker-release.yml@v4.0.1
     secrets:
       docker_username: ${{ secrets.DOCKER_USERNAME }}
       docker_password: ${{ secrets.DOCKER_PASSWORD }}
+      notation_private_key: ${{ secrets.NOTATION_PRIVATE_KEY }}
+      notation_certificate_chain: ${{ secrets.NOTATION_CERTIFICATE_CHAIN }}
+      notation_ca_certificate: ${{ secrets.NOTATION_CA_CERTIFICATE }}
     with:
       docker_url: zot.soh.re
-      image_name: jmainguy/${{ github.event.repository.name }}
+      registry_namespace: jmainguy
+      image_name: ${{ github.event.repository.name }}
       authors: "Jonathan Seth Mainguy <jon@soh.re>"
       url: "https://github.com/Jmainguy/soh.re"
       source: "https://github.com/Jmainguy/soh.re"
