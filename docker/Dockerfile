@@ -1,54 +1,121 @@
-# Maintainer Jonathan Mainguy jon@soh.re
-FROM fedora:45
-# Set architecture-specific variables
+FROM fedora:45 AS ttyd-builder
+
+# First upstream revision containing the mobile viewport fix from ttyd PR #1564.
+ARG TTYD_REF=2922cb89f518bae4d0fcf4d757a7419638fc71fc
+
+RUN dnf install -y --setopt=install_weak_deps=False \
+        cmake \
+        curl \
+        gcc \
+        json-c-devel \
+        libuv-devel \
+        libwebsockets-devel \
+        openssl-devel \
+        tar \
+        zlib-devel \
+    && dnf clean all \
+    && mkdir -p /src/ttyd \
+    && curl --fail --location --proto '=https' --tlsv1.2 \
+        "https://github.com/tsl0922/ttyd/archive/${TTYD_REF}.tar.gz" \
+        | tar --extract --gzip --directory /src/ttyd --strip-components=1 \
+    && cmake -S /src/ttyd -B /src/ttyd/build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr/local \
+    && cmake --build /src/ttyd/build --parallel \
+    && strip /src/ttyd/build/ttyd
+
+FROM golang:1.27.0 AS bible-builder
+
+# Bible v1.0.3.
+ARG BIBLE_REF=4d107ce3516a1b93028bfc1229993a823bac7fea
+
+RUN git clone --filter=blob:none https://github.com/Jmainguy/bible.git /src/bible \
+    && cd /src/bible \
+    && git checkout --detach "${BIBLE_REF}" \
+    && test "$(git rev-parse HEAD)" = "${BIBLE_REF}" \
+    && CGO_ENABLED=0 go build -trimpath \
+        -ldflags='-s -w -buildid=' \
+        -o /usr/local/bin/bible .
+
+FROM fedora-minimal:45 AS cli-assets
+
 ARG TARGETARCH
-# Set version of custom ttyd
-ARG TTYD_VERSION=1.8.3
+ARG ASCIQUARIUM_VERSION=2.0.0
 
-RUN dnf install -y bash-completion git gcc perl-CPAN perl-Curses ncurses-devel cmake gcc-c++
-# asciiquarium
-RUN curl https://raw.githubusercontent.com/Jmainguy/asciiquarium/main/asciiquarium --output /bin/asciiquarium
-RUN echo "y" | cpan Term::Animation || echo "moving on"
-RUN cp -R /root/.cpan/build/Term-Animation-2.6-0/lib/Term/Animation* /usr/share/perl5/vendor_perl/Term/
-RUN chmod +x /usr/bin/asciiquarium
-# cmatrix
-RUN git clone https://github.com/abishekvashok/cmatrix
-RUN mkdir -p cmatrix/build && cd cmatrix/build && cmake .. && make && make install
-# Add rest of things
-ADD Jonathan_Mainguy_Profile/* /home/jmainguy/
-RUN mkdir -p /home/jmainguy/bin
-ADD .gotty /home/jmainguy/.gotty
-ADD bashrc /home/jmainguy/.bashrc
-# Bible
-# Download the correct binary based on architecture
-RUN curl -L "https://github.com/Jmainguy/bible/releases/download/v0.3.2/bible_Linux_${TARGETARCH}.tar.gz" -o /tmp/bible.tar.gz
-RUN tar zxvf /tmp/bible.tar.gz
-RUN cp bible /home/jmainguy/bin/
-RUN mkdir -p /home/jmainguy/.bible/
-RUN cp database/bible.db /home/jmainguy/.bible/bible.db
-# Bak
-RUN curl https://raw.githubusercontent.com/Jmainguy/bak/main/bak --output /home/jmainguy/bin/bak
-RUN chmod +x /home/jmainguy/bin/*
-RUN dnf install -y python3-xattr wget
+RUN microdnf install -y --setopt=install_weak_deps=0 \
+        ca-certificates \
+        cpio \
+        curl-minimal \
+        rpm \
+    && microdnf clean all \
+    && mkdir -p /out/asciiquarium \
+    && case "${TARGETARCH}" in \
+        amd64) \
+            rpm_arch=x86_64; \
+            asciiquarium_sha=1349ff0daa23dd55d75e98c28758d2a9bee1b6c0fd3635e24f2313344cb926be ;; \
+        arm64) \
+            rpm_arch=aarch64; \
+            asciiquarium_sha=eaa56c58acb34450a40acf6d4f54d321df40fb194b51801264bd0be37ffe5a88 ;; \
+        *) echo "unsupported architecture: ${TARGETARCH}" >&2; exit 1 ;; \
+    esac \
+    && curl --fail --location --proto '=https' --tlsv1.2 \
+        "https://github.com/Jmainguy/asciiquarium/releases/download/v${ASCIQUARIUM_VERSION}/asciiquarium-${ASCIQUARIUM_VERSION}-1.${rpm_arch}.rpm" \
+        --output /tmp/asciiquarium.rpm \
+    && echo "${asciiquarium_sha}  /tmp/asciiquarium.rpm" | sha256sum --check --strict \
+    && cd /out/asciiquarium \
+    && rpm2cpio /tmp/asciiquarium.rpm | cpio --extract --make-directories --quiet
 
-# Gotty / ttyd
-# Download the appropriate ttyd binary based on the architecture
-RUN if [ "$TARGETARCH" = "amd64" ]; then \
-        wget https://github.com/Jmainguy/ttyd/releases/download/${TTYD_VERSION}/ttyd.x86_64 -O /bin/ttyd; \
-    elif [ "$TARGETARCH" = "arm64" ]; then \
-        wget https://github.com/Jmainguy/ttyd/releases/download/${TTYD_VERSION}/ttyd.aarch64 -O /bin/ttyd; \
-    else \
-        echo "Unsupported architecture: $TARGETARCH"; \
-        exit 1; \
-    fi
-RUN chmod +x /bin/ttyd
+FROM fedora-minimal:45
 
-ADD motd /etc/motd
-RUN useradd jmainguy
-RUN chown -R jmainguy:jmainguy /home/jmainguy
+LABEL org.opencontainers.image.authors="Jonathan Seth Mainguy <jon@soh.re>" \
+      org.opencontainers.image.description="Interactive terminal for soh.re" \
+      org.opencontainers.image.licenses="GPL-2.0" \
+      org.opencontainers.image.source="https://github.com/Jmainguy/soh.re" \
+      org.opencontainers.image.title="soh.re" \
+      org.opencontainers.image.url="https://github.com/Jmainguy/soh.re" \
+      org.opencontainers.image.vendor="Jmainguy"
+
+# Keep the interactive shell useful while omitting compilers, Python, Perl,
+# and other build-only dependencies from the runtime image.
+RUN microdnf upgrade -y \
+    && microdnf install -y --setopt=install_weak_deps=0 \
+        bash \
+        bash-completion \
+        ca-certificates \
+        cmatrix \
+        coreutils \
+        findutils \
+        git-core \
+        grep \
+        gzip \
+        iproute \
+        json-c \
+        less \
+        libuv \
+        libwebsockets \
+        openssl-libs \
+        procps-ng \
+        sed \
+        shadow-utils \
+        tar \
+        which \
+    && microdnf clean all \
+    && rm -rf /var/cache/dnf /var/log/dnf* /tmp/*
+
+COPY --from=ttyd-builder /src/ttyd/build/ttyd /usr/local/bin/ttyd
+COPY --from=cli-assets /out/asciiquarium/usr/bin/asciiquarium /usr/local/bin/asciiquarium
+COPY --from=bible-builder /usr/local/bin/bible /usr/local/bin/bible
+COPY --from=bible-builder /src/bible/database/bible.db /home/jmainguy/.bible/bible.db
+
+COPY Jonathan_Mainguy_Profile/ /home/jmainguy/
+COPY bashrc /home/jmainguy/.bashrc
+COPY motd /etc/motd
+
+RUN useradd --create-home --home-dir /home/jmainguy --shell /bin/bash jmainguy \
+    && chown -R jmainguy:jmainguy /home/jmainguy
 
 USER jmainguy
 WORKDIR /home/jmainguy
 EXPOSE 8080
 ENV TERM=xterm
-CMD ["/bin/ttyd", "--once", "--writable", "-p", "8080", "/bin/bash"]
+CMD ["/usr/local/bin/ttyd", "--once", "--writable", "-p", "8080", "/bin/bash"]
