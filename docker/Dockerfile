@@ -1,4 +1,4 @@
-FROM registry.fedoraproject.org/fedora:45 AS ttyd-builder
+FROM registry.fedoraproject.org/fedora:46 AS ttyd-builder
 
 # First upstream revision containing the mobile viewport fix from ttyd PR #1564.
 ARG TTYD_REF=2922cb89f518bae4d0fcf4d757a7419638fc71fc
