@@ -1,4 +1,4 @@
-FROM fedora:45 AS ttyd-builder
+FROM registry.fedoraproject.org/fedora:45 AS ttyd-builder
 
 # First upstream revision containing the mobile viewport fix from ttyd PR #1564.
 ARG TTYD_REF=2922cb89f518bae4d0fcf4d757a7419638fc71fc
@@ -37,7 +37,7 @@ RUN git clone --filter=blob:none https://github.com/Jmainguy/bible.git /src/bibl
         -ldflags='-s -w -buildid=' \
         -o /usr/local/bin/bible .
 
-FROM fedora-minimal:45 AS cli-assets
+FROM registry.fedoraproject.org/fedora-minimal:45 AS cli-assets
 
 ARG TARGETARCH
 ARG ASCIQUARIUM_VERSION=2.0.0
@@ -65,7 +65,7 @@ RUN microdnf install -y --setopt=install_weak_deps=0 \
     && cd /out/asciiquarium \
     && rpm2cpio /tmp/asciiquarium.rpm | cpio --extract --make-directories --quiet
 
-FROM fedora-minimal:45
+FROM registry.fedoraproject.org/fedora-minimal:45
 
 LABEL org.opencontainers.image.authors="Jonathan Seth Mainguy <jon@soh.re>" \
       org.opencontainers.image.description="Interactive terminal for soh.re" \
