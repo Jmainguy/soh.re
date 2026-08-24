@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.3.0](https://github.com/Jmainguy/soh.re/compare/v1.2.2...v1.3.0) (2026-08-24)
+
+
+### Features
+
+* harden interactive terminal image ([8ea7e43](https://github.com/Jmainguy/soh.re/commit/8ea7e43003fad8f8182dd3a899f543ae7103752c))
+
+
+### Bug Fixes
+
+* **ci:** configure Notation signing secrets ([0f5524a](https://github.com/Jmainguy/soh.re/commit/0f5524a58003c838740d7d709a975dffd31aa94f))
+* **ci:** use canonical Fedora image references ([e5fab65](https://github.com/Jmainguy/soh.re/commit/e5fab65c9bfff3aeaa2f8bf5b52804d22f2358c7))
+
 ## [1.2.2](https://github.com/Jmainguy/soh.re/compare/v1.2.1...v1.2.2) (2024-10-31)
 
 
