@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.6.0](https://github.com/Jmainguy/soh.re/compare/v1.5.2...v1.6.0) (2026-08-25)
+
+
+### Features
+
+* add certification portfolio command ([37cd616](https://github.com/Jmainguy/soh.re/commit/37cd61614a212fbc05d1131499de1bd2cc6eee9d))
+
+
+### Bug Fixes
+
+* list verified Red Hat exam history ([9e740e2](https://github.com/Jmainguy/soh.re/commit/9e740e2da7e7398549d054fecdf3cd33d6d45fde))
+* record Red Hat Certified Architect achievement ([25f862b](https://github.com/Jmainguy/soh.re/commit/25f862b748c8b60e2f4cd9fe427980c9b4d3de4a))
+
 ## [1.5.2](https://github.com/Jmainguy/soh.re/compare/v1.5.1...v1.5.2) (2026-08-25)
 
 
