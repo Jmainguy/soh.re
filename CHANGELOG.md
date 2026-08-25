@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/Jmainguy/soh.re/compare/v1.4.2...v1.5.0) (2026-08-25)
+
+
+### Features
+
+* add interactive NineVolt portfolio experience ([68c9e9f](https://github.com/Jmainguy/soh.re/commit/68c9e9f442017b19a5bf7a8edaaa806a476d6f5d))
+
 ## [1.4.2](https://github.com/Jmainguy/soh.re/compare/v1.4.1...v1.4.2) (2026-08-25)
 
 
