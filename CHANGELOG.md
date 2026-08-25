@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.2](https://github.com/Jmainguy/soh.re/compare/v1.4.1...v1.4.2) (2026-08-25)
+
+
+### Bug Fixes
+
+* update WeatherSpect to 2.0.3 ([5d9ed3b](https://github.com/Jmainguy/soh.re/commit/5d9ed3b56e375bb559cd1127286e2cdd698f6435))
+
 ## [1.4.1](https://github.com/Jmainguy/soh.re/compare/v1.4.0...v1.4.1) (2026-08-25)
 
 
