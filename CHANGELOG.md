@@ -1,5 +1,22 @@
 # Changelog
 
+## [1.7.0](https://github.com/Jmainguy/soh.re/compare/v1.6.0...v1.7.0) (2026-08-25)
+
+
+### Features
+
+* add policy management skill ([e354b47](https://github.com/Jmainguy/soh.re/commit/e354b478c7287b28884cce7bdba6b5d17ec709a6))
+* align skills with professional profile ([1c7afd8](https://github.com/Jmainguy/soh.re/commit/1c7afd84eca22f314c00e938c9e0013efc7f8b3f))
+* broaden professional skills summary ([60b6116](https://github.com/Jmainguy/soh.re/commit/60b6116f9fc97cba330b7ad4a0f1bc991f85a8a8))
+* expand security skills ([ed070c6](https://github.com/Jmainguy/soh.re/commit/ed070c6da063e7e669389464f3d5943b51f0d4ce))
+
+
+### Bug Fixes
+
+* consolidate overlapping skills ([8ad96fd](https://github.com/Jmainguy/soh.re/commit/8ad96fd38ba96aba9f5679b7fb798d53c4ef7d44))
+* refine portfolio skills summary ([ccf2da4](https://github.com/Jmainguy/soh.re/commit/ccf2da4ad688cfc83ccd73b4d58999cd2817f070))
+* remove NineVoltNine from code listing ([21a0701](https://github.com/Jmainguy/soh.re/commit/21a070119b4b5dd2a8beb5056d268cd03233bfa8))
+
 ## [1.6.0](https://github.com/Jmainguy/soh.re/compare/v1.5.2...v1.6.0) (2026-08-25)
 
 
