@@ -47,14 +47,14 @@ EOF
     skills)
         cat <<'EOF'
 Languages       Go, Python, Bash
-Platforms       Linux, Kubernetes, EKS, k3s, OpenShift, GKE, GKE Autopilot,
-                Anthos / Google Distributed Cloud, Cloud Run, AWS, GCP
+Platforms       Linux, Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift),
+                AWS, GCP (Anthos, Cloud Run, Pub/Sub)
 Delivery        Argo CD, CircleCI, GitHub Actions, Harness, JFrog Artifactory
 Automation      Terraform, Puppet, Ansible, Helm
-Observability   Grafana, Grafana Alloy, Prometheus, Jaeger, OpenTelemetry,
+Observability   Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
                 New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
 Security        HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager
-Event Streaming Confluent Cloud, Amazon MSK, Cluster Linking, Kafka Connect,
+Event Streaming Kafka (Confluent Cloud, Amazon MSK), Connect, Cluster Linking,
                 Schema Registry replication, Confluent for Kubernetes
 EOF
         ;;
