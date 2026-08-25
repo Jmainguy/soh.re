@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/Jmainguy/soh.re/compare/v1.5.1...v1.5.2) (2026-08-25)
+
+
+### Bug Fixes
+
+* correct portfolio profile commands ([8283c72](https://github.com/Jmainguy/soh.re/commit/8283c72bf5f9f33cf44f2205db82d6b698b2072f))
+
 ## [1.5.1](https://github.com/Jmainguy/soh.re/compare/v1.5.0...v1.5.1) (2026-08-25)
 
 
