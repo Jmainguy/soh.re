@@ -136,7 +136,7 @@ COPY motd /etc/motd
 COPY --chmod=0755 portfolio /usr/local/bin/soh
 
 RUN useradd --create-home --home-dir /home/jmainguy --shell /bin/bash jmainguy \
-    && for command in about projects explore skills contact stack resume source fun; do \
+    && for command in about projects explore skills contact stack resume code fun; do \
         ln -s /usr/local/bin/soh "/usr/local/bin/${command}"; \
     done \
     && chown -R jmainguy:jmainguy /home/jmainguy

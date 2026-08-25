@@ -53,7 +53,7 @@ EOF
 Email       jon@soh.re
 GitHub      https://github.com/Jmainguy
 Website     https://jmainguy.com
-LinkedIn    https://www.linkedin.com/in/jmainguy
+LinkedIn    https://www.linkedin.com/in/jonathan-mainguy-76174a54/
 EOF
         ;;
     stack)
@@ -67,11 +67,10 @@ EOF
         ;;
     resume)
         cat <<'EOF'
-Interactive resume: https://verboseresume.com
-LinkedIn:           https://www.linkedin.com/in/jmainguy
+Professional profile: https://www.linkedin.com/in/jonathan-mainguy-76174a54/
 EOF
         ;;
-    source)
+    code)
         cat <<'EOF'
 soh.re:       https://github.com/Jmainguy/soh.re
 WeatherSpect: https://github.com/Jmainguy/weatherspect
@@ -99,10 +98,10 @@ Portfolio commands:
   projects    Selected software and live websites
   explore     Websites you can visit
   skills      Platforms and technologies
-    contact     GitHub, website, LinkedIn, and email
+  contact     GitHub, website, LinkedIn, and email
   stack       How this terminal is delivered
-  resume      Resume and professional profile
-  source      Open-source repositories
+  resume      Professional profile
+  code        Open-source repositories
   fun         Interactive terminal programs
 
 Use "builtin help" for the Bash command reference.
