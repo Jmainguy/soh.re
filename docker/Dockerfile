@@ -30,7 +30,7 @@ ARG TARGETARCH
 ARG ASCIQUARIUM_VERSION=2.0.0
 ARG BIBLE_REF=4d107ce3516a1b93028bfc1229993a823bac7fea
 ARG BIBLE_VERSION=1.0.3
-ARG WEATHERSPECT_VERSION=2.0.2
+ARG WEATHERSPECT_VERSION=2.0.3
 
 RUN microdnf install -y --setopt=install_weak_deps=0 \
         ca-certificates \
@@ -44,12 +44,12 @@ RUN microdnf install -y --setopt=install_weak_deps=0 \
             rpm_arch=x86_64; \
             asciiquarium_sha=1349ff0daa23dd55d75e98c28758d2a9bee1b6c0fd3635e24f2313344cb926be; \
             bible_sha=407ad679717ecd883db29f6ae8226a90f8ddbcd5a9959276725259b5305ccfe4; \
-            weatherspect_sha=0bf013c2d585606b5fa820b7ea74292ef853969ce26e390209706841a0541904 ;; \
+            weatherspect_sha=ddba57687c07231157674fad221709743d6884ed8f2fbd4d2685af1d3c808f57 ;; \
         arm64) \
             rpm_arch=aarch64; \
             asciiquarium_sha=eaa56c58acb34450a40acf6d4f54d321df40fb194b51801264bd0be37ffe5a88; \
             bible_sha=28a898d24dfc5396841325b73bb645121f88b7323a57511ae95cddd570bf2ab1; \
-            weatherspect_sha=f2c15bbcfd9d7eea86dd77a03f73367b744a6e095abf9b95a5785e493e2f876d ;; \
+            weatherspect_sha=0f764123fd87aff3d5261dd3a57a13d7e032e7b95b3c4781d27015d937580f1a ;; \
         *) echo "unsupported architecture: ${TARGETARCH}" >&2; exit 1 ;; \
     esac \
     && curl --fail --location --proto '=https' --tlsv1.2 \
