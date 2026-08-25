@@ -46,16 +46,20 @@ EOF
         ;;
     skills)
         cat <<'EOF'
-Languages       Go, Python, Bash
-Platforms       Linux, Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift),
-                AWS, GCP (Anthos, Cloud Run, Pub/Sub)
-Delivery        Argo CD, CircleCI, GitHub Actions, Harness, JFrog Artifactory
-Automation      Terraform, Puppet, Ansible, Helm
+Software        Go, Rust, Python, Bash, JavaScript, SQL
+Platforms       Linux, containers, networking,
+                Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift)
+Cloud           AWS, GCP (Anthos, Cloud Run, Pub/Sub)
+Delivery        GitOps, CI/CD, Argo CD, CircleCI, GitHub Actions, Harness,
+                Helm, OCI, RPM / DEB packaging, JFrog Artifactory
+Automation      Terraform, Puppet, Ansible
 Observability   Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
                 New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
 Security        HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager
 Event Streaming Kafka (Confluent Cloud, Amazon MSK), Connect, Cluster Linking,
                 Schema Registry replication, Confluent for Kubernetes
+Operations      Troubleshooting, reliability, platform enablement
+Leadership      Servant leadership, mentoring, technical direction
 EOF
         ;;
     contact)
