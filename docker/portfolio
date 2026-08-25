@@ -46,13 +46,13 @@ EOF
         ;;
     skills)
         cat <<'EOF'
-Software        Go, Rust, Python, Bash, JavaScript, SQL
-Platforms       Linux, containers, networking,
+Software        Go, Rust, Python, Bash, JavaScript
+Platforms       Linux, containers,
                 Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift)
-Cloud           AWS, GCP (Anthos, Cloud Run, Pub/Sub)
-Delivery        GitOps, CI/CD, Argo CD, CircleCI, GitHub Actions, Harness,
-                Helm, OCI, RPM / DEB packaging, JFrog Artifactory
-Automation      Terraform, Puppet, Ansible
+Cloud           AWS, GCP, Oracle
+Delivery        GitOps, CI/CD, Argo CD, GitHub Actions, Helm, OCI,
+                RPM / DEB packaging, JFrog Artifactory
+Automation      Terraform, Ansible
 Observability   Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
                 New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
 Security        HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager
