@@ -1,0 +1,116 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+command_name="${1:-$(basename "$0")}" 
+
+case "$command_name" in
+    about)
+        cat <<'EOF'
+Jonathan Mainguy
+Linux infrastructure engineer, open-source builder, husband, father, and follower of Jesus.
+
+I build dependable platforms, automate repetitive work, mentor engineers, and publish useful
+software. Read the longer story at https://jmainguy.com/about/
+EOF
+        ;;
+    projects)
+        cat <<'EOF'
+Selected projects and live websites:
+
+  BaboViolent     Multiplayer action game                    https://baboviolent.net
+  Verbose Resume  Resume and career tooling                  https://verboseresume.com
+  NineVoltNine    Open guitar pedal platform                 https://ninevoltnine.com
+  soh.re          This live, isolated terminal               https://soh.re
+  Bible Reader    Fast scripture search and reading          https://bible.soh.re
+  Shoreline       A place to explore by the water            https://shoreline.soh.re
+
+More project stories: https://jmainguy.com/projects/
+EOF
+        ;;
+    explore)
+        cat <<'EOF'
+Open these in your browser:
+
+  https://jmainguy.com/projects/   Project stories and source links
+  https://baboviolent.net          BaboViolent
+  https://verboseresume.com        Verbose Resume
+  https://ninevoltnine.com         NineVoltNine
+  https://bible.soh.re             Bible Reader
+  https://shoreline.soh.re         Shoreline
+EOF
+        ;;
+    skills)
+        cat <<'EOF'
+Infrastructure  Linux, Kubernetes, KubeVirt, containers, networking
+Delivery        GitOps, Argo CD, Helm, OCI, CI/CD, RPM and DEB packaging
+Software        Go, Rust, Python, Bash, JavaScript, SQL
+Operations      Automation, observability, security, troubleshooting
+Leadership      Servant leadership, mentoring, platform enablement
+EOF
+        ;;
+    contact)
+        cat <<'EOF'
+Email       jon@soh.re
+GitHub      https://github.com/Jmainguy
+Website     https://jmainguy.com
+LinkedIn    https://www.linkedin.com/in/jmainguy
+Company     https://standouthost.com
+EOF
+        ;;
+    stack)
+        cat <<'EOF'
+Browser -> ttyd/WebSocket -> isolated container -> Bash
+
+The service is delivered as a signed multi-architecture OCI image through Kubernetes,
+Helm, Git, and Argo CD. Network access is restricted; weather requests use a dedicated
+Open-Meteo proxy.
+EOF
+        ;;
+    resume)
+        cat <<'EOF'
+Interactive resume: https://verboseresume.com
+LinkedIn:           https://www.linkedin.com/in/jmainguy
+EOF
+        ;;
+    source)
+        cat <<'EOF'
+soh.re:       https://github.com/Jmainguy/soh.re
+WeatherSpect: https://github.com/Jmainguy/weatherspect
+ASCIIQuarium: https://github.com/Jmainguy/asciiquarium
+Bible Reader: https://github.com/Jmainguy/bible
+NineVoltNine: https://ninevoltnine.com
+EOF
+        ;;
+    fun)
+        cat <<'EOF'
+Try a few interactive programs:
+
+  weatherspect "Raleigh, NC"  Animated weather scene
+  ninevolt                    Guitar pedals (controls work here; audio is silent)
+  asciiquarium                Animated terminal aquarium
+  bible -passage "John 3:16"  Scripture reader
+  cmatrix                     Terminal rain
+EOF
+        ;;
+    help|soh)
+        cat <<'EOF'
+Portfolio commands:
+
+  about       Who I am and what I work on
+  projects    Selected software and live websites
+  explore     Websites you can visit
+  skills      Platforms and technologies
+  contact     GitHub, website, LinkedIn, and email
+  stack       How this terminal is delivered
+  resume      Resume and professional profile
+  source      Open-source repositories
+  fun         Interactive terminal programs
+
+Use "builtin help" for the Bash command reference.
+EOF
+        ;;
+    *)
+        printf 'Unknown portfolio command: %s\n' "$command_name" >&2
+        exit 2
+        ;;
+esac

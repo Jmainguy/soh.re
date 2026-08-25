@@ -1,9 +1,17 @@
-        Welcome to Jonathan Seth Mainguy's open source profile.
-        You might want to ls, to see what files are in here.
-        cat the files, to see what they contain.
+Jonathan Mainguy
+Linux Infrastructure · Kubernetes · Automation · Open Source
 
-        Some fun commands you might enjoy
-          - cmatrix (I didnt make this, its just fun)
-          - asciiquarium (I didnt make this, its just fun)
-          - weatherspect (a Rust port of Kirk Baucom's original)
-          - bible (I wrote this program)
+This is a live, isolated terminal running on my infrastructure.
+
+Explore:
+  about       Who I am and what I work on
+  projects    Selected software and live websites
+  skills      Platforms and technologies
+  contact     GitHub, website, LinkedIn, and email
+  help        Everything available here
+
+Try:
+  weatherspect "Raleigh, NC"
+  ninevolt
+  asciiquarium
+  bible -passage "John 3:16"
