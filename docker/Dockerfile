@@ -24,7 +24,7 @@ RUN dnf install -y --setopt=install_weak_deps=False \
     && cmake --build /src/ttyd/build --parallel \
     && strip /src/ttyd/build/ttyd
 
-FROM registry.fedoraproject.org/fedora-minimal:45 AS cli-assets
+FROM registry.fedoraproject.org/fedora-minimal:46 AS cli-assets
 
 ARG TARGETARCH
 ARG ASCIQUARIUM_VERSION=2.0.0
@@ -76,7 +76,7 @@ RUN microdnf install -y --setopt=install_weak_deps=0 \
     && cd /out/weatherspect \
     && rpm2cpio /tmp/weatherspect.rpm | cpio --extract --make-directories --quiet
 
-FROM registry.fedoraproject.org/fedora-minimal:45
+FROM registry.fedoraproject.org/fedora-minimal:46
 
 LABEL org.opencontainers.image.authors="Jonathan Seth Mainguy <jon@soh.re>" \
       org.opencontainers.image.description="Interactive terminal for soh.re" \
