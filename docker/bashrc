@@ -29,5 +29,5 @@ help() {
     fi
 }
 
-PS1='\u@\h:\w `if [ $? = 0 ]; then echo \[\e[32m\]:\)\[\e[37m\]; else echo \[\e[31m\]:\(\[\e[37m\]; fi` $ '
+PS1='\u@soh.re:\w `if [ $? = 0 ]; then echo \[\e[32m\]:\)\[\e[37m\]; else echo \[\e[31m\]:\(\[\e[37m\]; fi` $ '
 cat /etc/motd
