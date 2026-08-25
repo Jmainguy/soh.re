@@ -56,7 +56,7 @@ Automation        Terraform, Ansible
 Observability     Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
                   New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
 Security          HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager,
-                  Trivy, JFrog Xray, Twistlock, Wiz
+                  OPA (policy management), Trivy, JFrog Xray, Twistlock, Wiz
 Event Streaming   Kafka (Confluent Cloud, Amazon MSK), Connect, Cluster Linking,
                   Schema Registry replication, Confluent for Kubernetes
 Operations        Troubleshooting, reliability, platform enablement
