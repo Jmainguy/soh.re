@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/Jmainguy/soh.re/compare/v1.3.0...v1.4.0) (2026-08-25)
+
+
+### Features
+
+* add WeatherSpect to soh.re terminal ([7d7fd8f](https://github.com/Jmainguy/soh.re/commit/7d7fd8f68da6f088891218c645fc183faee8228f))
+
 ## [1.3.0](https://github.com/Jmainguy/soh.re/compare/v1.2.2...v1.3.0) (2026-08-24)
 
 
