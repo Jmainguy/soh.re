@@ -29,9 +29,17 @@ EOF
         ;;
     certs)
         cat <<'EOF'
-Red Hat certification record:
+Red Hat exam transcript:
 
-  Verify: https://www.redhat.com/rhtapps/certification/verify/?certId=140-120-619
+  EX276  Containerized Application Development          Jul 13, 2016
+  EX342  Linux Diagnostics and Troubleshooting          Jun 10, 2016
+  EX236  Gluster Storage Administration                 Sep 10, 2015
+  EX210  System Administrator in Red Hat OpenStack      Jun 12, 2015
+  EX280  OpenShift Administration                       Apr 10, 2015
+  EX300  Red Hat Certified Engineer (RHCE)              Jun 27, 2014
+  EX200  Red Hat Certified System Administrator (RHCSA) Jun 27, 2014
+
+  Verify: https://rhtapps.redhat.com/verify/?certId=140-120-619
 EOF
         ;;
     skills)
