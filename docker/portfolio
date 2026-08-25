@@ -46,21 +46,21 @@ EOF
         ;;
     skills)
         cat <<'EOF'
-Software        Go, Rust, Python, Bash, JavaScript
-Platforms       Linux, containers,
-                Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift)
-Cloud           AWS, GCP, Oracle
-Delivery        GitOps, CI/CD, Argo CD, GitHub Actions, Helm, OCI,
-                RPM / DEB packaging, JFrog Artifactory
-Automation      Terraform, Ansible
-Observability   Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
-                New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
-Security        HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager,
-                Trivy, JFrog Xray, Twistlock, Wiz
+Software          Go, Rust, Python, Bash, JavaScript
+Platforms         Linux, containers,
+                  Kubernetes (EKS, GKE, Autopilot, k3s, OpenShift)
+Cloud             AWS, GCP, Oracle
+Delivery          GitOps, CI/CD, Argo CD, GitHub Actions, Helm, OCI,
+                  RPM / DEB packaging, JFrog Artifactory
+Automation        Terraform, Ansible
+Observability     Grafana / Alloy, Prometheus, Jaeger, OpenTelemetry,
+                  New Relic, Loki, Kiali, Datadog, OpsGenie, Alertmanager
+Security          HashiCorp Vault, AWS Secrets Manager, GCP Secret Manager,
+                  Trivy, JFrog Xray, Twistlock, Wiz
 Event Streaming   Kafka (Confluent Cloud, Amazon MSK), Connect, Cluster Linking,
                   Schema Registry replication, Confluent for Kubernetes
-Operations      Troubleshooting, reliability, platform enablement
-Leadership      Servant leadership, mentoring, technical direction
+Operations        Troubleshooting, reliability, platform enablement
+Leadership        Servant leadership, mentoring, technical direction
 EOF
         ;;
     contact)
