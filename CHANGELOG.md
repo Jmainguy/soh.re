@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/Jmainguy/soh.re/compare/v1.5.0...v1.5.1) (2026-08-25)
+
+
+### Bug Fixes
+
+* refine contact details and terminal prompt ([6308327](https://github.com/Jmainguy/soh.re/commit/6308327e3e96b8d90482b67a1405d96dd514b229))
+
 ## [1.5.0](https://github.com/Jmainguy/soh.re/compare/v1.4.2...v1.5.0) (2026-08-25)
 
 
