@@ -11,7 +11,7 @@ Explore:
   help        Everything available here
 
 Try:
-  weatherspect "Raleigh, NC"
+  weatherspect --location "Raleigh, NC"
   ninevolt
   asciiquarium
   bible -passage "John 3:16"

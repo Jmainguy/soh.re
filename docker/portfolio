@@ -97,7 +97,7 @@ EOF
         cat <<'EOF'
 Try a few interactive programs:
 
-  weatherspect "Raleigh, NC"  Animated weather scene
+  weatherspect --location "Raleigh, NC"  Animated weather scene
   ninevolt                    Guitar pedals (controls work here; audio is silent)
   asciiquarium                Animated terminal aquarium
   bible -passage "John 3:16"  Scripture reader
