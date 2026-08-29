@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.7.1](https://github.com/Jmainguy/soh.re/compare/v1.7.0...v1.7.1) (2026-08-29)
+
+
+### Bug Fixes
+
+* correct WeatherSpect location examples ([2367e66](https://github.com/Jmainguy/soh.re/commit/2367e664e48c72b7229ad6732ac7be4a856f29ed))
+
 ## [1.7.0](https://github.com/Jmainguy/soh.re/compare/v1.6.0...v1.7.0) (2026-08-25)
 
 
